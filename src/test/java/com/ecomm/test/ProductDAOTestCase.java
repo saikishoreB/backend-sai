@@ -17,10 +17,11 @@ import com.ecomm.model.Product;
 public class ProductDAOTestCase {
 
 	static ProductDAO productDAO;
+	private static AnnotationConfigApplicationContext context;
 	
 	@BeforeClass
 	public static void executeFirst() {
-        AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
+        context = new AnnotationConfigApplicationContext();
 		
 		context.scan("com.ecomm");
 		context.refresh();

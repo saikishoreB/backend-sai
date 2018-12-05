@@ -5,9 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.Collection;
-
-
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
@@ -19,12 +17,13 @@ public class SupplierDAOTestCase {
 	
 	AbstractApplicationContext context = new AnnotationConfigApplicationContext(DBConfig.class);
 	SupplierDAO supplierDAO=(SupplierDAO) context.getBean("supplierDAO");
-	
+	@Test
 	public void testFindAllSuppliers() {
 		
 		List<com.ecomm.model.Supplier> supplierList=supplierDAO.findAllSuppliers();
 		assertNotNull(supplierList);
 	}
+	@Test
 	public void testFindSupplierById() 
 	{
 		Supplier supplier1=supplierDAO.findSupplierById(3);
@@ -33,6 +32,7 @@ public class SupplierDAOTestCase {
 		int actualId=supplier1.getSupplierId();
 		assertTrue(expectedId==actualId);
 	}
+	@Test
 	public void testFindSupplierByName()
 	{
 		Supplier supplier2=supplierDAO.findSupplierByName("basics");
@@ -41,7 +41,7 @@ public class SupplierDAOTestCase {
 		String actualName=supplier2.getSupplierName();
 		assertTrue(expectedName.equals(actualName));
 	}
-
+@Test
 	public void testAddSupplier()
 	{
 		Supplier supplier=new Supplier();
@@ -52,7 +52,7 @@ public class SupplierDAOTestCase {
 		supplier.setSupplierMailId("srt@gmail.com");
 		assertEquals(true,supplierDAO.addSupplier(supplier));
 	}
-
+@Test
 	public void testUpdateSupplier()
 	{
 		Supplier supplier3=supplierDAO.findSupplierById(5);
@@ -60,7 +60,7 @@ public class SupplierDAOTestCase {
 		supplierDAO.updateSupplier(supplier3);
 		assertTrue(supplier3.getSupplierMobNo()=="91356");
 	}
-
+@Test
 	public void testDeleteSupplier()
 	{
 		Supplier supplier4=supplierDAO.findSupplierById(6);

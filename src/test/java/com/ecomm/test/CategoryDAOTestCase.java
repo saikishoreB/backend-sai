@@ -16,11 +16,12 @@ public class CategoryDAOTestCase
 {
 	
 	static CategoryDAO categoryDAO;
+	private static AnnotationConfigApplicationContext context;
 
 	@BeforeClass
 	public static void executeFirst()
 	{
-		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
+		context = new AnnotationConfigApplicationContext();
 		
 		context.scan("com.ecomm");
 		context.refresh();
@@ -36,7 +37,7 @@ public class CategoryDAOTestCase
 		category.setCategoryName("WindowCurtain");
 		category.setCategorydesc("Various Variety of Window Curtains");
 		
-		assertTrue("Probem in Adding the Category",categoryDAO.add(category));
+		assertTrue("Problem in Adding the Category",categoryDAO.add(category));
 	}
 	
 	
